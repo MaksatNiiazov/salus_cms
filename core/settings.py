@@ -101,6 +101,7 @@ STATIC_ROOT = BASE_DIR / 'static2'
 CSRF_TRUSTED_ORIGINS = ['https://salus.kg', 'https://www.salus.kg']
 CSRF_COOKIE_SECURE = True  # CSRF-куки будут передаваться только по HTTPS
 SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_AGE = 1400
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
