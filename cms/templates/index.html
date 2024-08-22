@@ -111,10 +111,10 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li data-bs-dismiss="offcanvas">
-                      <a class="dropdown-item" href="#">Русский (РУ)</a>
+                      <a class="dropdown-item" href="/">Русский (РУ)</a>
                     </li>
                     <li data-bs-dismiss="offcanvas">
-                      <a class="dropdown-item" href="#">Кыргызча (КГ)</a>
+                      <a class="dropdown-item" href="/ky/">Кыргызча (КГ)</a>
                     </li>
                   </ul>
                 </li>
@@ -171,20 +171,21 @@
         <div class="container">
           <h2 class="heading">{{ service_title.title }}</h2>
           <div
-            class="d-flex flex-row flex-wrap services-wrap gap-3 gap-lg-4"
-          ></div>
+            class="d-flex flex-row flex-wrap services-wrap gap-3 gap-lg-4">
+
           {% for service in services %}
           <div
             class="service-card"
             style="background-color: rgba(208, 226, 118, 0.56)"
           >
             <div class="service-card_img">
-              <img src="{{ service.img.url }}" alt="" />
+              <img src="{{ service.image.url }}" alt="" class="img-fluid" />
             </div>
             <h5 class="service-title">{{ service.title }}</h5>
             <p>{{ service.description }}</p>
           </div>
           {% endfor %}
+          </div>
         </div>
       </section>
 
