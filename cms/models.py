@@ -47,6 +47,10 @@ class Services(SingletonModel):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+
 
 class ServiceItem(models.Model):
     services = models.ForeignKey(Services, on_delete=models.CASCADE, related_name='services', verbose_name='Услуга')
@@ -155,6 +159,7 @@ class Phones(models.Model):
     class Meta:
         verbose_name = 'Телефон'
         verbose_name_plural = 'Телефоны'
+
 
 class Address(models.Model):
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='address', verbose_name='Контакт')

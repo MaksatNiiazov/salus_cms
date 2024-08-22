@@ -39,9 +39,9 @@ class AdvantagesAdmin(TranslationAdmin):
     inlines = [AdvantageItemInline]
 
 
-@admin.register(AdvantageItem)
-class AdvantageItemAdmin(TranslationAdmin):
-    pass
+# @admin.register(AdvantageItem)
+# class AdvantageItemAdmin(TranslationAdmin):
+#     pass
 
 
 @admin.register(Developer)
