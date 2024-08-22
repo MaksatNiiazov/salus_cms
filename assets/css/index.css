@@ -55,7 +55,7 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("./assets/hero-bg.png");
+  background-image: url("../imgs/hero-bg.png");
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -157,7 +157,7 @@ main {
 
 #hero {
   padding: 64px 0px 104px 0px;
-  background-image: url("./assets/hero-bg.png");
+  background-image: url("../imgs/hero-bg.png");
   background-position: unset;
   background-repeat: no-repeat;
   background-clip: border-box;
@@ -285,7 +285,7 @@ main {
 }
 
 #contact-us {
-  background-image: url("./assets/hero-bg.png");
+  background-image: url("../imgs/hero-bg.png");
   background-position: right center;
   background-repeat: no-repeat;
   background-clip: border-box;
@@ -453,7 +453,7 @@ main {
 
 .form-cover {
   padding: 48px 19px;
-  background-image: url(./assets/form-bg.webp);
+  background-image: url(../imgs/form-bg.webp);
   background-size: cover;
   background-position: top;
   border-radius: 25px;
