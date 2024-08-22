@@ -59,19 +59,22 @@ class InquiryAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone')  # Отображаемые поля в списке
 
 
-
 class PhonesInline(admin.StackedInline):
     model = Phones
     extra = 0
 
+
 class SocialInline(admin.StackedInline):
     model = Social
     extra = 0
+
+
 class WorkTimeInline(admin.StackedInline):
     model = WorkTime
     extra = 0
 
+
 @admin.register(Contact)
 class ContactAdmin(TranslationAdmin):
-    pass
+    inlines = [PhonesInline, SocialInline, WorkTimeInline]
 

@@ -282,7 +282,7 @@
                         <p>{{ building.description }}</p>
                         {% if building.file %}
                         <a href="{{ building.file.url }}" target="_blank">
-                          <img src="../../assets/imgs/file-icon.svg" alt="" />
+                          <img src="{% static 'assets/imgs/file-icon.svg' %}" alt="" />
                           Подробнее об объекте
                         </a>
                         {% endif %}
