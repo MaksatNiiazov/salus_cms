@@ -98,7 +98,7 @@ MEDIA_ROOT = BASE_DIR / 'media2'
 STATIC_URL = '/static2/'
 STATIC_ROOT = BASE_DIR / 'static2'
 
-CSRF_TRUSTED_ORIGINS = ['https://salus.kg/', 'https://www.salus.kg/']
+CSRF_TRUSTED_ORIGINS = ['https://salus.kg', 'https://www.salus.kg']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
