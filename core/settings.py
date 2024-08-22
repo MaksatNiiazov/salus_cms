@@ -90,8 +90,13 @@ DATABASES = {
 STATICFILES_DIRS = [
     BASE_DIR / "assets",
 ]
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "static"
+# Настройка URL для медиафайлов
+MEDIA_URL = '/media2/'
+MEDIA_ROOT = BASE_DIR / 'media2'
+
+# Настройка URL для статических файлов
+STATIC_URL = '/static2/'
+STATIC_ROOT = BASE_DIR / 'static2'
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
