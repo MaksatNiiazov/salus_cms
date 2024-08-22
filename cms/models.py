@@ -187,7 +187,7 @@ class WorkTime(models.Model):
     time = models.CharField(max_length=200, verbose_name='Время')
 
     def __str__(self):
-        return self.day
+        return self.description
 
     class Meta:
         verbose_name = 'Время работы'
