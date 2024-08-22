@@ -130,11 +130,12 @@ class Inquiry(models.Model):
         verbose_name_plural = 'Запросы'
 
 
-class Contact(models.Model):
-    phone = models.CharField(max_length=20, verbose_name='Телефон')
-    email = models.EmailField(verbose_name='Электронная почта')
-    address = models.TextField(verbose_name='Адрес')
+class Contact(SingletonModel):
+    small_text = models.TextField(verbose_name='Короткий текст')
+    text = models.TextField(verbose_name='Текст')
+    phone_text = models.TextField(verbose_name='Текст для телефонов')
     map = models.TextField(blank=True, null=True, verbose_name='Карта')
+    map_link = models.CharField(max_length=255, blank=True, null=True, verbose_name='Ссылка на карту')
 
     def __str__(self):
         return f"Контакт {self.id}"
@@ -142,3 +143,52 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Контактная информация'
         verbose_name_plural = 'Контактная информация'
+
+
+class Phones(models.Model):
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='phones', verbose_name='Контакт')
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
+
+    def __str__(self):
+        return self.phone
+
+    class Meta:
+        verbose_name = 'Телефон'
+        verbose_name_plural = 'Телефоны'
+
+class Address(models.Model):
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='address', verbose_name='Контакт')
+    address = models.CharField(max_length=200, verbose_name='Адрес')
+
+    def __str__(self):
+        return self.address
+
+    class Meta:
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
+
+
+class Social(models.Model):
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='social', verbose_name='Контакт')
+    icon = models.FileField(upload_to='social/', verbose_name='Иконка', null=True)
+    link = models.CharField(max_length=200, verbose_name='Ссылка')
+
+    def __str__(self):
+        return self.link
+
+    class Meta:
+        verbose_name = 'Социальная сеть'
+        verbose_name_plural = 'Социальные сети'
+
+
+class WorkTime(models.Model):
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='work_time', verbose_name='Контакт')
+    description = models.CharField(max_length=200, verbose_name='День')
+    time = models.CharField(max_length=200, verbose_name='Время')
+
+    def __str__(self):
+        return self.day
+
+    class Meta:
+        verbose_name = 'Время работы'
+        verbose_name_plural = 'Время работы'

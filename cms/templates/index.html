@@ -201,7 +201,7 @@
     <section id="contact-us">
         <div class="container">
             <div class="d-flex flex-column flex-lg-row">
-                <h4>Чтобы получить консультацию, свяжитесь с нами</h4>
+                <h4>{{ contacts.small_text }}</h4>
                 <a href="#zayavka" class=""> Связаться </a>
             </div>
         </div>
@@ -316,8 +316,7 @@
             <div class="d-flex flex-column flex-lg-row form-cover mt-4">
                 <div class="form">
                     <h5 class="form-title">
-                        Для получения консультации оставьте заявку, и мы свяжемся с
-                        вами.
+                        {{ contacts.text }}
                     </h5>
                     <div class="d-flex flex-column gap-3 mt-4">
                         <input type="text" placeholder="Ваше имя"/>
@@ -330,10 +329,11 @@
 
                 <div class="form-contacts d-flex flex-column">
                     <h5 class="form-contacts-title">
-                        Так же вы можете связаться с нами по телефону
+                        {{ contacts.phone_text }}
                     </h5>
 
-                    <a href="tel:+996555555555">
+                    {% for phone in contacts.phones.all %}
+                        <a href="tel:{{ phone.phone }}">
                         <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -342,27 +342,12 @@
                                 class="bi bi-telephone-outbound"
                                 viewBox="0 0 16 16"
                         >
-                            <path
-                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"
-                            />
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"/>
                         </svg>
-                        +996555555555</a
-                    >
-                    <a href="tel:+996555555555">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="bi bi-telephone-outbound"
-                                viewBox="0 0 16 16"
-                        >
-                            <path
-                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"
-                            />
-                        </svg>
-                        +996555555555</a
-                    >
+                        {{ phone.phone }}</a>
+                    {% endfor %}
+
+
                 </div>
             </div>
         </div>
@@ -374,68 +359,46 @@
 
             <div class="d-flex flex-column flex-lg-row mt-4">
                 <div class="contacts d-flex flex-column gap-4">
-                    <a href="tel:+996555555555" class="d-flex flex-row align-items-center gap-2">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="bi bi-telephone-outbound"
-                                viewBox="0 0 16 16"
-                        >
-                            <path
-                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"
-                            />
-                        </svg>
-                        +996555555555
-                    </a>
-                    <a href="tel:+996555555555" class="d-flex flex-row gap-2">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                class="bi bi-telephone-outbound"
-                                viewBox="0 0 16 16"
-                        >
-                            <path
-                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"
-                            />
-                        </svg>
-                        +996555555555
-                    </a>
+                    {% for phone in contacts.phones.all %}
+                        <a href="tel:{{ phone.phone }}" class="d-flex flex-row align-items-center gap-2">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="bi bi-telephone-outbound"
+                                    viewBox="0 0 16 16"
+                            >
+                                <path
+                                        d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"
+                                />
+                            </svg>
+                            {{ phone.phone }}
+                        </a>
+                    {% endfor %}
+
 
                     <div class="d-flex flex-row socials gap-4 align-items-center">
-                        <a href="https://facebook.com" target="_blank">
-                            <img src="/assets/Facebook.svg" alt=""/>
-                        </a>
-                        <a href="https://wa.me/+996555555555" target="_blank">
-                            <img src="/assets/Whatsapp.svg" alt=""/>
-                        </a>
-                        <a href="https://instagram.com" target="_blank">
-                            <img src="/assets/Instagram.png" alt=""/>
-                        </a>
-                        <a href="https://telegram.org" target="_blank">
-                            <img src="/assets/Telegram.svg" alt=""/>
-                        </a>
-                        <a href="mailto:5zCJt@example.com" target="_blank">
-                            <img src="/assets/Gmail.svg" alt=""/>
-                        </a>
+                        {% for social in contacts.social.all %}
+                            <a href="{{ social.link }}" target="_blank">
+                                <img src="{{ social.logo.url }}" alt=""/>
+                            </a>
+                        {% endfor %}
                     </div>
 
                     <div class="schedule d-flex flex-column">
                         <h4 class="schedule-title">График работы</h4>
 
-                        <p class="schedule-text">
-                            <strong>Пн-Вс: </strong> с 9:00 до 20:00
-                        </p>
-                        <p class="schedule-text">
-                            <strong>Пн-Вс: </strong> с 9:00 до 20:00
-                        </p>
+                        {% for worktime in contacts.work_time.all %}
+                            <p class="schedule-text">
+                                <strong>{{ worktime.description }}: </strong> {{ worktime.time }}
+                            </p>
+                        {% endfor %}
+
                     </div>
 
                     <a
-                            href="https://go.2gis.com/2u87w"
+                            href="{{ contacts.map_link }}"
                             target="_blank"
                             class="map-link d-flex flex-row gap-2 align-items-center"
                     >
@@ -448,43 +411,7 @@
                     </a>
                 </div>
                 <div class="map">
-                    <a
-                            class="dg-widget-link"
-                            href="http://2gis.kg/bishkek/firm/70000001039842673/center/74.61453,42.876625/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap"
-                    >Посмотреть на карте Бишкека</a
-                    >
-                    <div class="dg-widget-link">
-                        <a
-                                href="http://2gis.kg/bishkek/firm/70000001039842673/photos/70000001039842673/center/74.61453,42.876625/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos"
-                        >Фотографии компании</a
-                        >
-                    </div>
-                    <div class="dg-widget-link">
-                        <a
-                                href="http://2gis.kg/bishkek/center/74.61453,42.876625/zoom/16/routeTab/rsType/bus/to/74.61453,42.876625╎ЦУМ Айчурек, торгово-развлекательный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route"
-                        >Найти проезд до ЦУМ Айчурек, торгово-развлекательный
-                            комплекс</a
-                        >
-                    </div>
-                    <script
-                            charset="utf-8"
-                            src="https://widgets.2gis.com/js/DGWidgetLoader.js"
-                    ></script>
-                    <script charset="utf-8">
-                        new DGWidgetLoader({
-                            width: 640,
-                            height: 600,
-                            borderColor: "#a3a3a3",
-                            pos: {lat: 42.876625, lon: 74.61453, zoom: 16},
-                            opt: {city: "bishkek"},
-                            org: [{id: "70000001039842673"}],
-                        });
-                    </script>
-                    <noscript style="color: #c00; font-size: 16px; font-weight: bold"
-                    >Виджет карты использует JavaScript. Включите его в настройках
-                        вашего браузера.
-                    </noscript
-                    >
+                    {{ contacts.map|safe }}
                 </div>
             </div>
         </div>

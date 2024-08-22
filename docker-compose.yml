@@ -1,28 +1,18 @@
 version: "3.10"
 
 services:
-
-  db:
-    image: postgres:latest
-    restart: always
-    env_file:
-      - .env
-    volumes:
-      - "./postgres:/var/lib/postgresql/data"
-
   app:
     build: .
     volumes:
-      - .:/config
+      - .:/app
       - ./static:/app/static
       - ./media:/app/media
     ports:
-    - "8027:8027"
-    command: bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations  && python manage.py migrate && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8027"
+      - "8029:8029"
+    command: bash -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8029"
     env_file:
       - .env
-    depends_on:
-      - db
+ # На самом деле этот сервис не нужен, так как SQLite не требует отдельного контейнера
 
 #  nginx:
 #    image: nginx:latest

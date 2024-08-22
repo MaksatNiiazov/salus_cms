@@ -50,4 +50,4 @@ class InquiryTranslationOptions(TranslationOptions):
 
 @register(Contact)
 class ContactTranslationOptions(TranslationOptions):
-    fields = ('address', 'map')
+    fields = ('text', 'small_text', 'phone_text')

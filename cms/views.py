@@ -61,6 +61,15 @@ class SiteView(View):
                 name='ЖК Osh Plaza',
                 description='ЖК Osh Plaza в Оше будет построен на участке площадь 1,12 га. Здание высотой в 14 этажей имеет классический архитектурный облик, а в отделке его фасадов используются только качественные натуральные материалы.',
             )
+        conrtacts = Contact.objects.first()
+        if not conrtacts:
+            conrtacts = Contact.objects.create(
+                text='Для получения консультации оставьте заявку, и мы свяжемся с вами.',
+                small_text='Чтобы получить консультацию, свяжитесь с нами',
+                phone_text='Так же вы можете связаться с нами по телефону',
+            )
+
+
 
         context = {
             'main_block': mainblock,
@@ -71,5 +80,6 @@ class SiteView(View):
             'advantages': advantages,
             'developers': developers,
             'buildings': buildings,
+            'contacts': conrtacts,
         }
         return render(request, 'index.html', context=context)

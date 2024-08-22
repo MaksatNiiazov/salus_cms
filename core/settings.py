@@ -116,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 LANGUAGES = (            # supported languages
-    ('en', 'English'),
     ('ru', 'Russian'),
     ('ky', 'Kyrgyz'),
 )

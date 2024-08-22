@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import MainBlock, AboutUs, Services, ServiceItem, Advantages, AdvantageItem, Developer, Building, Inquiry, \
-    Contact
+    Contact, Phones, Social, WorkTime
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -59,6 +59,19 @@ class InquiryAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone')  # Отображаемые поля в списке
 
 
+
+class PhonesInline(admin.StackedInline):
+    model = Phones
+    extra = 0
+
+class SocialInline(admin.StackedInline):
+    model = Social
+    extra = 0
+class WorkTimeInline(admin.StackedInline):
+    model = WorkTime
+    extra = 0
+
 @admin.register(Contact)
 class ContactAdmin(TranslationAdmin):
     pass
+
