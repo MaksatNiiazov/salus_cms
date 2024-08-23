@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import MainBlock, AboutUs, Services, ServiceItem, Advantages, AdvantageItem, Developer, Building, Inquiry, \
-    Contact, Phones, Social, WorkTime
+    Contact, Phones, Social, WorkTime, Requests
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -78,3 +78,7 @@ class WorkTimeInline(admin.StackedInline):
 class ContactAdmin(TranslationAdmin):
     inlines = [PhonesInline, SocialInline, WorkTimeInline]
 
+
+@admin.register(Requests)
+class RequestsAdmin(admin.ModelAdmin):
+    pass
