@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.messages import get_messages
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import *
 
@@ -69,7 +71,7 @@ class SiteView(View):
                 phone_text='Так же вы можете связаться с нами по телефону',
             )
 
-
+        message_exist = request.session.pop('message_exist', False)
 
         context = {
             'main_block': mainblock,
@@ -81,5 +83,24 @@ class SiteView(View):
             'developers': developers,
             'buildings': buildings,
             'contacts': conrtacts,
+            'message_exist': message_exist
         }
+
         return render(request, 'index.html', context=context)
+
+
+class CreateRequestView(View):
+    def get(self, request):
+        message_exist = request.session.pop('message_exist', False)
+        return render(request, 'index.html', {'message_exist': message_exist})
+
+    def post(self, request):
+        name = request.POST.get('name', 'Неизвестно')
+        phone = request.POST.get('phone', 'Неизвестно')
+        email = request.POST.get('email', 'Неизвестно')
+        text = request.POST.get('text', 'Неизвестно')
+        Requests.objects.create(name=name, phone=phone, email=email, text=text)
+        messages.success(request, 'Ваша заявка принята')
+
+        request.session['message_exist'] = True
+        return redirect('index')

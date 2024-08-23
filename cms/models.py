@@ -197,3 +197,14 @@ class WorkTime(models.Model):
     class Meta:
         verbose_name = 'Время работы'
         verbose_name_plural = 'Время работы'
+
+
+class Requests(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя', blank=True, null=True)
+    email = models.EmailField(verbose_name='Электронная почта', blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name='Телефон')
+    text = models.TextField(verbose_name='Сообщение', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Запрос'
+        verbose_name_plural = 'Запросы'
