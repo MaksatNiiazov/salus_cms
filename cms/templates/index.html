@@ -99,24 +99,33 @@
                             <a class="nav-link" href="#zastroyshiki">Застройщики</a>
                         </li>
                         <li class="nav-item" data-bs-dismiss="offcanvas">
-                            <a class="nav-link" href="#kontakty">Контакты</a>
+                            <a class="nav-link" href="#kontakty">Контакты {{ LANGUAGE_CODE }}</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                            >
-                                РУ
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
                             </a>
                             <ul class="dropdown-menu">
                                 <li data-bs-dismiss="offcanvas">
-                                    <a class="dropdown-item" href="/">Русский (РУ)</a>
+                                    <a class="dropdown-item" href="/ru/">Русский (РУ)</a>
                                 </li>
                                 <li data-bs-dismiss="offcanvas">
                                     <a class="dropdown-item" href="/ky/">Кыргызча (КГ)</a>
+                                </li>
+                                <li data-bs-dismiss="offcanvas">
+                                    <a class="dropdown-item" href="/en/">English (EN)</a>
+                                </li>
+                                <li data-bs-dismiss="offcanvas">
+                                    <a class="dropdown-item" href="/ar/">اَلْعَرَبِيَّةُ (AR)</a>
+                                </li>
+                                <li data-bs-dismiss="offcanvas">
+                                    <a class="dropdown-item" href="/tr/">Türkçe (TR)</a>
+                                </li>
+                                <li data-bs-dismiss="offcanvas">
+                                    <a class="dropdown-item" href="/zh-hans/">中文 (ZH)</a>
                                 </li>
                             </ul>
                         </li>
@@ -163,6 +172,7 @@
                 <img
                         src="
 
+
                                 {% if about_us.image %}{{ about_us.image.url }}{% else %}{% static 'imgs/placeholder.webp' %}{% endif %}"
                         alt=""
                 />
@@ -202,6 +212,7 @@
                 <div class="advantages-img_cover">
                     <img
                             src="
+
 
                                     {% if advantages_title.image %}{{ advantages_title.image.url }}{% else %}{% static 'imgs/placeholder.webp' %}{% endif %}"
                             alt=""
@@ -252,6 +263,7 @@
                         >
                             <img
                                     src="
+
                                             {% if developer.logo %}{{ developer.logo.url }}{% else %}{% static 'imgs/placeholder.webp' %}{% endif %}"
                             />
                         </button>
@@ -278,6 +290,7 @@
                                         <div class="d-flex flex-column flex-lg-row gap-3 gap-lg-5">
                                             <img
                                                     src="
+
                                                             {% if building.image %}{{ building.image.url }}{% else %}{% static 'imgs/placeholder.webp' %}{% endif %}"
                                                     alt=""
                                             />
@@ -347,16 +360,17 @@
                 <div class="form">
                     <h5 class="form-title">{{ contacts.text }}</h5>
 
-                        <form type="submit" action="{% url 'request' %}" method="post" class="d-flex flex-column gap-3 mt-4">
-                            {% csrf_token %}
+                    <form type="submit" action="{% url 'request' %}" method="post"
+                          class="d-flex flex-column gap-3 mt-4">
+                        {% csrf_token %}
 
-                            <input name="name" type="text" placeholder="Ваше имя"/>
+                        <input name="name" type="text" placeholder="Ваше имя"/>
 
-                            <input name="email" type="email" placeholder="Адрес электронной почты"/>
-                            <input name="phone" type="tel" placeholder="Номер телефона"/>
-                            <input name="text" type="text" placeholder="Ваше сообщение"/>
-                            <button type="submit" id="send-form">Отправить заявку</button>
-                        </form>
+                        <input name="email" type="email" placeholder="Адрес электронной почты"/>
+                        <input name="phone" type="tel" placeholder="Номер телефона"/>
+                        <input name="text" type="text" placeholder="Ваше сообщение"/>
+                        <button type="submit" id="send-form">Отправить заявку</button>
+                    </form>
 
                 </div>
 
@@ -497,12 +511,12 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener("scroll", function () {
-        if( window.innerWidth > 992){
-               if (window.scrollY > 56) {
-            document.querySelector("nav").style.top = "0px";
-        } else {
-            document.querySelector("nav").style.top = "56px";
-        }
+        if (window.innerWidth > 992) {
+            if (window.scrollY > 56) {
+                document.querySelector("nav").style.top = "0px";
+            } else {
+                document.querySelector("nav").style.top = "56px";
+            }
         }
 
     });
@@ -530,68 +544,67 @@
     });
 </script>
 <div
-      class="modal fade"
-      data-message-sent="{% if message_exist %}true{% else %}false{% endif %}"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
+        class="modal fade"
+        data-message-sent="{% if message_exist %}true{% else %}false{% endif %}"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-body py-5">
-            <div
-              class="d-flex justify-content-center align-items-center checkmark"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-check2"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"
-                />
-              </svg>
+            <div class="modal-body py-5">
+                <div
+                        class="d-flex justify-content-center align-items-center checkmark"
+                >
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-check2"
+                            viewBox="0 0 16 16"
+                    >
+                        <path
+                                d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"
+                        />
+                    </svg>
+                </div>
+
+                <h5>Ваша заявка успешно отправлена, ожидайте ответа!</h5>
+
+                <button
+                        type="button"
+                        class="close-modal-btn"
+                        data-bs-dismiss="modal"
+                >
+                    Готово
+                </button>
             </div>
-
-            <h5>Ваша заявка успешно отправлена, ожидайте ответа!</h5>
-
-            <button
-              type="button"
-              class="close-modal-btn"
-              data-bs-dismiss="modal"
-            >
-              Готово
-            </button>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
 
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
         const modalEl = document.getElementById("exampleModal");
         const modal = new bootstrap.Modal("#exampleModal", {
-          keyboard: true,
-          backdrop: true,
-          focus: true,
+            keyboard: true,
+            backdrop: true,
+            focus: true,
         });
 
         console.log(modalEl);
 
         modalEl.getAttribute("data-message-sent") === "true"
-          ? modal.show()
-          : modal.hide();
+            ? modal.show()
+            : modal.hide();
 
-        setTimeout(()=>{
+        setTimeout(() => {
             modal.hide()
-        },5000)
-      });
-    </script>
+        }, 5000)
+    });
+</script>
 </body>
 </html>
