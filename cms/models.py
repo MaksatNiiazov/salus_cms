@@ -208,3 +208,22 @@ class Requests(models.Model):
     class Meta:
         verbose_name = 'Запрос'
         verbose_name_plural = 'Запросы'
+
+
+class SiteSettings(SingletonModel):
+    site_name = models.CharField(max_length=255, verbose_name="Название сайта")
+    site_description = models.TextField(verbose_name="Описание сайта")
+    site_logo = models.FileField(upload_to="site_logos", verbose_name="Логотип сайта", blank=True, null=True)
+    site_bottom_logo = models.FileField(upload_to="site_logos", verbose_name="Логотип нижней части сайта", blank=True,
+                                        null=True)
+    site_favicon = models.FileField(upload_to="site_favicons", verbose_name="Иконка сайта", blank=True, null=True)
+    meta_title = models.CharField(max_length=255, verbose_name="Мета заголовок", blank=True, null=True)
+    meta_description = models.CharField(max_length=255, verbose_name="Мета описание", blank=True, null=True)
+    meta_image = models.ImageField(upload_to="images/meta", verbose_name="Мета изображение", blank=True, null=True)
+
+    def __str__(self):
+        return self.site_name
+
+    class Meta:
+        verbose_name = "Настройки сайта"
+        verbose_name_plural = "Настройки сайта"

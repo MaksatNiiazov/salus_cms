@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import MainBlock, AboutUs, Services, ServiceItem, Advantages, AdvantageItem, Developer, Building, Inquiry, \
-    Contact, Phones, Social, WorkTime, Requests
+    Contact, Phones, Social, WorkTime, Requests, SiteSettings
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -81,4 +81,8 @@ class ContactAdmin(TranslationAdmin):
 
 @admin.register(Requests)
 class RequestsAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
     pass

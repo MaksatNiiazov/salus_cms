@@ -72,6 +72,13 @@ class SiteView(View):
             )
 
         message_exist = request.session.pop('message_exist', False)
+        site_meta = SiteSettings.objects.first()
+        if not site_meta:
+            site_meta = SiteSettings.objects.create(
+                site_name = 'SALUS',
+                site_description = 'Salus.kg',
+                meta_title = 'salus.kg',
+                meta_description = 'salus.kg')
 
         context = {
             'main_block': mainblock,
@@ -83,7 +90,8 @@ class SiteView(View):
             'developers': developers,
             'buildings': buildings,
             'contacts': conrtacts,
-            'message_exist': message_exist
+            'message_exist': message_exist,
+            'site_meta': site_meta,
         }
 
         return render(request, 'index.html', context=context)
