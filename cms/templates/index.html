@@ -31,8 +31,7 @@
 <body>
 <header>
     <div
-            class="flex-row align-items-center justify-content-end py-3 px-4 gap-5 header-contacts d-none d-lg-flex"
-    >
+            class="flex-row align-items-center justify-content-end py-3 px-4 gap-5 header-contacts d-none d-lg-flex">
         {% for phone in contacts.phones.all %}
             <a
                     href="tel:{{ phone.phone }}"
