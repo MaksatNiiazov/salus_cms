@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="{{ site_meta.meta_description }}"/>
     <meta name="title" content="{{ site_meta.meta_title }}"/>
-    <meta name="image" content="{% if site_meta.meta_image %}{{ site_meta.meta_image.url }}{% endif %}"/>
+    <meta name="image" content="{% if site_meta.meta_image %}{{ site_meta.meta_image.url }}{% else %}{% static 'imgs/logo.png' %}{% endif %}"/>
     <title>{{ site_meta.site_name }}</title>
     <link rel="icon" type="image/png" href="{% if site_meta.site_favicon %}{{ site_meta.site_favicon.url }}{% else %}{% static 'imgs/logo.png' %}{% endif %}">
 
